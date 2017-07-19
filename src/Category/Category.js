@@ -9,10 +9,11 @@ class Category extends Component {
   }
 
   render () {
+    const { params } = this.props.navigation.state
     return (
       <View style={styles.wapper}>
         <Text style={styles.text}>
-          Trang danh muc
+          Trang danh muc, {params.name}
         </Text>
         <Button onPress={this.gotoHome.bind(this)} title='Back to Home' color='blue' />
       </View>
