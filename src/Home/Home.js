@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
+import Drawer from 'react-native-drawer'
+import ControlPanel from '../Menu/ControlPanel'
 
 class Home extends Component {    
   static navigationOptions = {
@@ -16,15 +18,31 @@ class Home extends Component {
     navigate('Category', {name: 'Quan ao'})
   }
 
+  closeControlPanel = () => {
+    this._drawer.close()
+  };
+  openControlPanel = () => {
+    this._drawer.open()
+  };
+
   render () {
     const {name} = this.props
+    const { navigate } = this.props.navigation
     return (
-      <View style={styles.wapper}>
+      <Drawer
+        ref={(ref) => this._drawer = ref}
+        content={<ControlPanel navigate={navigate} />}
+        tapToClose={true}
+        openDrawerOffset={0.3}        
+        >
+        <View style={styles.wapper}>
         <Text style={styles.text}>
           Trang Home
         </Text>
         <Button onPress={this.gotoCategory.bind(this)} title='Category' color='black' />
+        <Button onPress={this.openControlPanel} title='Show menu' />
       </View>
+      </Drawer>
     )
   }
 }
