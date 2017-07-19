@@ -6,7 +6,7 @@ import Category from './Category/Category'
 StatusBar.setHidden(true)
 
 const Menu = StackNavigator({
-  Home: { screen: Home},
+  Home: { screen: Home },
   Category: { screen: Category }
 })
 
